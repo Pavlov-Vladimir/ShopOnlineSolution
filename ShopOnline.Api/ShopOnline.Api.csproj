@@ -15,8 +15,4 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\ShopOnline.WebAsm\ShopOnline.WebAsm.csproj" />
-  </ItemGroup>
-
 </Project>

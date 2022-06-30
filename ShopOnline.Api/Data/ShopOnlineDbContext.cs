@@ -8,7 +8,6 @@ public class ShopOnlineDbContext : DbContext
     public ShopOnlineDbContext(DbContextOptions<ShopOnlineDbContext> options)
         : base(options)
     {
-
     }
 
     public DbSet<Cart> Carts { get; set; }
