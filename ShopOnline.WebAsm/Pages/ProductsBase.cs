@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Components;
-using ShopOnline.Models.Dtos;
-using ShopOnline.WebAsm.Services.Contracts;
-
-namespace ShopOnline.WebAsm.Pages;
+﻿namespace ShopOnline.WebAsm.Pages;
 
 public class ProductsBase : ComponentBase
 {
