@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopOnline.WebAsm", "ShopOnline.WebAsm\ShopOnline.WebAsm.csproj", "{6D25BAB0-F444-41AB-8743-E8A5B877E3D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopOnline.WebAsm", "ShopOnline.WebAsm\ShopOnline.WebAsm.csproj", "{6D25BAB0-F444-41AB-8743-E8A5B877E3D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopOnline.Api", "ShopOnline.Api\ShopOnline.Api.csproj", "{CAD6D054-050E-4BF1-9632-3BAF8E1D0B91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopOnline.Api", "ShopOnline.Api\ShopOnline.Api.csproj", "{CAD6D054-050E-4BF1-9632-3BAF8E1D0B91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopOnline.Models", "ShopOnline.Models\ShopOnline.Models.csproj", "{09BC3F52-E44C-4C40-91EC-F8FEBED0CF31}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{CAD6D054-050E-4BF1-9632-3BAF8E1D0B91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAD6D054-050E-4BF1-9632-3BAF8E1D0B91}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CAD6D054-050E-4BF1-9632-3BAF8E1D0B91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09BC3F52-E44C-4C40-91EC-F8FEBED0CF31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09BC3F52-E44C-4C40-91EC-F8FEBED0CF31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09BC3F52-E44C-4C40-91EC-F8FEBED0CF31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09BC3F52-E44C-4C40-91EC-F8FEBED0CF31}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
