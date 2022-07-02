@@ -1,6 +1,4 @@
-﻿using ShopOnline.Models.Dtos;
-
-namespace ShopOnline.WebAsm.Services.Contracts;
+﻿namespace ShopOnline.WebAsm.Services.Contracts;
 
 public interface IProductService
 {

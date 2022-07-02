@@ -1,8 +1,4 @@
-﻿using ShopOnline.Models.Dtos;
-using ShopOnline.WebAsm.Services.Contracts;
-using System.Net.Http.Json;
-
-namespace ShopOnline.WebAsm.Services;
+﻿namespace ShopOnline.WebAsm.Services;
 
 public class ProductService : IProductService
 {

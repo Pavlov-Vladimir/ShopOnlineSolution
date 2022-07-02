@@ -1,9 +1,12 @@
-﻿global using System;
+﻿global using Microsoft.AspNetCore.Components;
+global using Microsoft.AspNetCore.Components.Web;
+global using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+global using ShopOnline.Models.Dtos;
+global using ShopOnline.WebAsm;
+global using ShopOnline.WebAsm.Services;
+global using ShopOnline.WebAsm.Services.Contracts;
+global using System;
 global using System.Collections.Generic;
 global using System.Linq;
-global using System.Text;
+global using System.Net.Http.Json;
 global using System.Threading.Tasks;
-global using Microsoft.AspNetCore.Components;
-global using ShopOnline.Models.Dtos;
-global using ShopOnline.WebAsm.Services.Contracts;
-
