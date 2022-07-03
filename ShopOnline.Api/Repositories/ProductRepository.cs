@@ -26,9 +26,9 @@ public class ProductRepository : IProductRepository
         return category;
     }
 
-    public async Task<Product> GetItem(int id)
+    public async Task<Product?> GetItem(int id)
     {
-        var product = await _shopOnlineDbContext.Products.SingleOrDefaultAsync(c => c.Id == id);
+        var product = await _shopOnlineDbContext.Products.FindAsync(id);
         return product;
     }
 

@@ -40,4 +40,29 @@ public class ProductController : ControllerBase
                               "Error retrieving data from the database.");
         }
     }
+
+    [HttpGet("{id:int}")]
+    public async Task<ActionResult<ProductDto>> GetItem(int id)
+    {
+        try
+        {
+            var product = await _productRepository.GetItem(id);
+
+            if (product is null)
+            {
+                return BadRequest();
+            }
+            else
+            {
+                var category = await _productRepository.GetCategory(product.CategoryId);
+                var productDto = product.ConvertToDto(category);
+                return Ok(productDto);
+            }
+        }
+        catch (Exception)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError,
+                              "Error retrieving data from the database.");
+        }
+    }
 }

@@ -23,4 +23,19 @@ public static class DtoConversions
                     Qty = product.Qty
                 }).ToList();
     }
+
+    public static ProductDto ConvertToDto(this Product product, ProductCategory category)
+    {
+        return new ProductDto
+        {
+            Id = product.Id,
+            Name = product.Name,
+            Description = product.Description,
+            CategoryId = category.Id,
+            CategoryName = category.Name,
+            ImageURL = product.ImageURL,
+            Price = product.Price,
+            Qty = product.Qty
+        };
+    }
 }
