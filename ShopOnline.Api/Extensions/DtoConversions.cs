@@ -1,7 +1,4 @@
-﻿using ShopOnline.Api.Entities;
-using ShopOnline.Models.Dtos;
-
-namespace ShopOnline.Api.Extensions;
+﻿namespace ShopOnline.Api.Extensions;
 
 public static class DtoConversions
 {

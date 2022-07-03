@@ -1,9 +1,3 @@
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Net.Http.Headers;
-using ShopOnline.Api.Data;
-using ShopOnline.Api.Repositories;
-using ShopOnline.Api.Repositories.Contracts;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
