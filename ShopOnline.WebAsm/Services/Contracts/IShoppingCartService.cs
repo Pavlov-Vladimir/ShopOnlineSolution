@@ -3,5 +3,6 @@
 public interface IShoppingCartService
 {
     Task<CartItemDto?> AddItem(CartItemToAddDto cartItemToAddDto);
-    Task<IEnumerable<CartItemDto>?> GetItems(int userId);
+    Task<List<CartItemDto>?> GetItems(int userId);
+    Task<CartItemDto?> DeleteItem(int id);
 }
