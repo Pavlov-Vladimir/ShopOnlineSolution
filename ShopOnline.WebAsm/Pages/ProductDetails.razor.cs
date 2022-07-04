@@ -6,10 +6,13 @@ public partial class ProductDetails
     public int Id { get; set; }
 
     [Inject]
-    public IProductService ProductService { get; set; }
+    public IProductService ProductService { get; set; } = null!;
 
     [Inject]
-    public IShoppingCartService ShoppingCartService { get; set; }
+    public IShoppingCartService ShoppingCartService { get; set; } = null!;
+
+    [Inject]
+    public NavigationManager NavigationManager { get; set; } = null!;
 
     public string? ErrorMassege { get; set; }
 
@@ -32,6 +35,8 @@ public partial class ProductDetails
         try
         {
             var cartItemDto = await ShoppingCartService.AddItem(cartItemToAddDto);
+
+            NavigationManager.NavigateTo("/ShoppingCart");
         }
         catch (Exception)
         {

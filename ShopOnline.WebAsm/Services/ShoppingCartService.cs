@@ -40,7 +40,7 @@ public class ShoppingCartService : IShoppingCartService
     {
         try
         {
-            var response = await _httpClient.GetAsync($"api/{userId}/GetItems");
+            var response = await _httpClient.GetAsync($"api/ShoppingCart/{userId}/GetItems");
 
             if (response.IsSuccessStatusCode)
             {
