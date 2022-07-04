@@ -22,6 +22,16 @@ else
             <p class="mb-4">
                 <b>$@Product.Price (@Product.Qty items in stock)</b>
             </p>
+            <div>
+                <button class="btn btn-success" @onclick="() =>
+                    (AddToCart_Click(new CartItemToAddDto{
+                        CartId = HardCoded.CartId,
+                        ProductId = Product.Id,
+                        Qty = 1
+                    }))">
+                    <b>Add To Cart</b>
+                </button>
+            </div>
         </div>
     </div>
 }

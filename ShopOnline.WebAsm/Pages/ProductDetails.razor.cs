@@ -8,6 +8,9 @@ public partial class ProductDetails
     [Inject]
     public IProductService ProductService { get; set; }
 
+    [Inject]
+    public IShoppingCartService ShoppingCartService { get; set; }
+
     public string? ErrorMassege { get; set; }
 
     public ProductDto? Product { get; set; }
@@ -21,6 +24,18 @@ public partial class ProductDetails
         catch (Exception ex)
         {
             ErrorMassege = ex.Message;
+        }
+    }
+
+    protected async Task AddToCart_Click(CartItemToAddDto cartItemToAddDto)
+    {
+        try
+        {
+            var cartItemDto = await ShoppingCartService.AddItem(cartItemToAddDto);
+        }
+        catch (Exception)
+        {
+            // TODO Log exception
         }
     }
 }

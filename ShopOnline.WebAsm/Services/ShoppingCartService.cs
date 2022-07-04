@@ -53,7 +53,7 @@ public class ShoppingCartService : IShoppingCartService
             else
             {
                 var message = await response.Content.ReadAsStringAsync();
-                throw new Exception($"Http status: {response.StatusCode}, Message: {message}")
+                throw new Exception($"Http status: {response.StatusCode}, Message: {message}");
             }
         }
         catch (Exception)
