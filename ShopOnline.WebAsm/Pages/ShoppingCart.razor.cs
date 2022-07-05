@@ -26,8 +26,9 @@ public partial class ShoppingCart
         var cartItemDto = await ShoppingCartService.DeleteItem(id);
 
         RemoveCartItem(id);
-
     }
+
+
 
     private CartItemDto? GetCartItemDto(int id)
     {

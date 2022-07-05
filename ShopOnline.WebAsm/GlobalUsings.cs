@@ -11,3 +11,5 @@ global using System.Linq;
 global using System.Net.Http.Json;
 global using System.Threading.Tasks;
 global using System.Net;
+global using Newtonsoft.Json;
+global using System.Text;

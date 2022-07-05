@@ -81,8 +81,17 @@ public class ShoppingCartRepository : IShoppingCartRepository
                       }).ToListAsync();
     }
 
-    public Task<CartItem?> UpdateQty(int id, CartItemQtyUpdateDto cartItemQtyUpdateDto)
+    public async Task<CartItem?> UpdateQty(int id, CartItemQtyUpdateDto cartItemQtyUpdateDto)
     {
-        throw new NotImplementedException();
+        var item = await _shopOnlineDbContext.CartItems.FindAsync(id);
+
+        if (item == null)
+        {
+            return null;
+        }
+
+        item.Qty = cartItemQtyUpdateDto.Qty;
+        await _shopOnlineDbContext.SaveChangesAsync();
+        return item;
     }
 }
