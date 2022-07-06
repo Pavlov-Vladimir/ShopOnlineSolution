@@ -17,7 +17,7 @@ public partial class ShoppingCart
         {
             CartItems = await ShoppingCartService.GetItems(HardCoded.UserId);
 
-            CalculateCartSummaryTotals();
+            CartChanged();
         }
         catch (Exception ex)
         {
@@ -27,7 +27,6 @@ public partial class ShoppingCart
 
     protected async Task UpdateQty_Input(int id)
     {
-        //await JS.InvokeVoidAsync("MakeUpdateQtyButtonVisible", id, false);
         await MakeUpdateQtyButtonVisible(id, true);
     }
 
@@ -42,7 +41,7 @@ public partial class ShoppingCart
 
         RemoveCartItem(id);
 
-        CalculateCartSummaryTotals();
+        CartChanged();
     }
 
     protected async Task UpdateQtyCartItem_Click(int id, int qty)
@@ -71,7 +70,7 @@ public partial class ShoppingCart
                 }
             }
 
-            CalculateCartSummaryTotals();
+            CartChanged();
 
             await MakeUpdateQtyButtonVisible(id, false);
         }
@@ -104,7 +103,7 @@ public partial class ShoppingCart
 
     private void SetTotalQuantity()
     {
-        TotalQuantity = CartItems.Sum(q => q.Qty);
+        TotalQuantity = CartItems is null ? 0 : CartItems.Sum(q => q.Qty);
     }
 
     private CartItemDto? GetCartItem(int id)
@@ -118,7 +117,13 @@ public partial class ShoppingCart
 
         if (cartItemDto is not null)
         {
-            CartItems?.Remove(cartItemDto);
+            CartItems!.Remove(cartItemDto);
         }
+    }
+
+    private void CartChanged()
+    {
+        CalculateCartSummaryTotals();
+        ShoppingCartService.RaiseEventOnShoppingCartChanged(TotalQuantity);
     }
 }

@@ -3,5 +3,5 @@
 public partial class DisplayProducts
 {
     [Parameter]
-    public IEnumerable<ProductDto> Products { get; set; }
+    public IEnumerable<ProductDto> Products { get; set; } = null!;
 }

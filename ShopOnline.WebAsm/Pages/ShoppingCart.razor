@@ -11,7 +11,7 @@ else if (ErrorMessage is not null)
 else
 {
     <h3 class="mb-5">Shopping Cart</h3>
-    @if (@CartItems.Any())
+    @if (@CartItems?.Count() > 0)
     {
         <div class="row mb-5">
             <div class="col-md-9">
