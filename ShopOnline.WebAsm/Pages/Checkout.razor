@@ -1,0 +1,50 @@
+﻿@page "/Checkout"
+
+<h3 class="mb-5">Checkout</h3>
+<div class="row">
+    <div class="col-md-6">
+        <div>
+            <div id="smart-button-container">
+                <input type="hidden" name="descriptionInput" id="description" @bind="PaymentDescription" />
+                <input type="hidden" name="amountInput" id="amount" @bind="PaymentAmount" />
+                <div style="text-align: center; margin-top: 0.625rem;" id="paypal-button-container"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        @if (CartItems is null)
+        {
+            <DisplaySpinner />
+        }
+        else if (CartItems.Any() == false)
+        {
+            <p>You carrently have no items in your sopping csrt</p>
+        }
+        else
+        {
+            <h4 class="mb-2">Payment Summary</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in CartItems)
+                    {
+                        <tr>
+                            <td>@item.ProductName (@item.Qty)</td>
+                            <td><b>$@item.TotalPrice</b></td>
+                        </tr>
+                    }
+                    <tr>
+                        <td><b>Total Price (@TotalQty)</b></td>
+                        <td><b>$@PaymentAmount</b></td>
+                    </tr>
+                </tbody>
+            </table>
+        }
+    </div>
+</div>
+
