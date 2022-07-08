@@ -6,6 +6,8 @@ public partial class ShoppingCart
     public IJSRuntime JS { get; set; } = null!;
     [Inject]
     public IShoppingCartService ShoppingCartService { get; set; } = null!;
+    [Inject]
+    public IManageCartItemsLocalStorageService ManageCartItemsLocalStorageService { get; set; } = null!;
     public List<CartItemDto>? CartItems { get; set; }
     public string? ErrorMessage { get; set; }
     public string? TotalPrice { get; set; }
@@ -15,7 +17,7 @@ public partial class ShoppingCart
     {
         try
         {
-            CartItems = await ShoppingCartService.GetItems(HardCoded.UserId);
+            CartItems = await ManageCartItemsLocalStorageService.GetCollection();
 
             CartChanged();
         }
@@ -56,7 +58,7 @@ public partial class ShoppingCart
 
                 if (returnedUpdateItemDto != null)
                 {
-                    UpdateItemTotalPrice(returnedUpdateItemDto);
+                    await UpdateItemTotalPrice(returnedUpdateItemDto);
                 }
             }
             else
@@ -80,7 +82,7 @@ public partial class ShoppingCart
         }
     }
 
-    private void UpdateItemTotalPrice(CartItemDto cartItemDto)
+    private async Task UpdateItemTotalPrice(CartItemDto cartItemDto)
     {
         var item = GetCartItem(cartItemDto.Id);
 
@@ -88,6 +90,8 @@ public partial class ShoppingCart
         {
             item.TotalPrice = cartItemDto.Price * cartItemDto.Qty;
         }
+
+        await ManageCartItemsLocalStorageService.SaveCollection(CartItems);
     }
 
     private void CalculateCartSummaryTotals()
@@ -111,7 +115,7 @@ public partial class ShoppingCart
         return CartItems?.FirstOrDefault(i => i.Id == id);
     }
 
-    private void RemoveCartItem(int id)
+    private async Task RemoveCartItem(int id)
     {
         var cartItemDto = GetCartItem(id);
 
@@ -119,6 +123,8 @@ public partial class ShoppingCart
         {
             CartItems!.Remove(cartItemDto);
         }
+
+        await ManageCartItemsLocalStorageService.SaveCollection(CartItems);
     }
 
     private void CartChanged()

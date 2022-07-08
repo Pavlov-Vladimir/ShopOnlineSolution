@@ -6,6 +6,8 @@ public partial class Checkout
     public IJSRuntime JS { get; set; } = null!;
     [Inject]
     public IShoppingCartService ShoppingCartService { get; set; } = null!;
+    [Inject]
+    public IManageCartItemsLocalStorageService ManageCartItemsLocalStorageService { get; set; } = null!;
     protected IEnumerable<CartItemDto>? CartItems { get; set; }
     protected int TotalQty { get; set; }
     protected string? PaymentDescription { get; set; }
@@ -15,7 +17,7 @@ public partial class Checkout
     {
         try
         {
-            CartItems = await ShoppingCartService.GetItems(HardCoded.UserId);
+            CartItems = await ManageCartItemsLocalStorageService.GetCollection();
 
             if (CartItems is not null)
             {

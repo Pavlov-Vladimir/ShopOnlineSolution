@@ -8,13 +8,22 @@ public class ProductsBase : ComponentBase
     [Inject]
     public IShoppingCartService ShoppingCartService { get; set; } = null!;
 
+    [Inject]
+    public IManageProductsLocalStorageService ManageProductsLocalStorageService { get; set; } = null!;
+
+    [Inject]
+    public IManageCartItemsLocalStorageService ManageCartItemsLocalStorageService { get; set; } = null!;
+
     public IEnumerable<ProductDto>? Products { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        Products = await ProductService.GetItems();
+        await ClearLocalStorage();
 
-        var shoppingCartItems = await ShoppingCartService.GetItems(HardCoded.UserId);
+        Products = await ManageProductsLocalStorageService.GetCollection();
+
+        var shoppingCartItems = await ManageCartItemsLocalStorageService.GetCollection();
+
         var totalQty = shoppingCartItems is null ? 0 : shoppingCartItems.Sum(i => i.Qty);
 
         ShoppingCartService.RaiseEventOnShoppingCartChanged(totalQty);
@@ -31,5 +40,11 @@ public class ProductsBase : ComponentBase
     protected string? GetCategoryName(IGrouping<int, ProductDto> groupedProductDtos)
     {
         return groupedProductDtos.FirstOrDefault(pg => pg.CategoryId == groupedProductDtos.Key)?.CategoryName;
+    }
+
+    private async Task ClearLocalStorage()
+    {
+        await ManageProductsLocalStorageService.RemoveCollection();
+        await ManageCartItemsLocalStorageService.RemoveCollection();
     }
 }
