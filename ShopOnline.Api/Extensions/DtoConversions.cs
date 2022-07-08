@@ -2,34 +2,31 @@
 
 public static class DtoConversions
 {
-    public static IEnumerable<ProductDto> ConvertToDto(this IEnumerable<Product> products,
-                                                IEnumerable<ProductCategory> categories)
+    public static IEnumerable<ProductDto> ConvertToDto(this IEnumerable<Product> products)
     {
-        return (from product in products
-                join category in categories
-                on product.CategoryId equals category.Id
+        return (from product in products                
                 select new ProductDto
                 {
                     Id = product.Id,
                     Name = product.Name,
                     Description = product.Description,
-                    CategoryId = category.Id,
-                    CategoryName = category.Name,
+                    CategoryId = product.ProductCategory.Id,
+                    CategoryName = product.ProductCategory.Name,
                     ImageURL = product.ImageURL,
                     Price = product.Price,
                     Qty = product.Qty
                 }).ToList();
     }
 
-    public static ProductDto ConvertToDto(this Product product, ProductCategory category)
+    public static ProductDto ConvertToDto(this Product product)
     {
         return new ProductDto
         {
             Id = product.Id,
             Name = product.Name,
             Description = product.Description,
-            CategoryId = category.Id,
-            CategoryName = category.Name,
+            CategoryId = product.ProductCategory.Id,
+            CategoryName = product.ProductCategory.Name,
             ImageURL = product.ImageURL,
             Price = product.Price,
             Qty = product.Qty

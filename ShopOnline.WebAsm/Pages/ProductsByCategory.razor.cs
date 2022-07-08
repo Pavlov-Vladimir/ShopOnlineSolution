@@ -17,12 +17,9 @@ public partial class ProductsByCategory
             Products = await ProductService.GetProductsByCategory(CategoryId);
             if (Products is not null && Products.Any())
             {
-                var productDto = Products.FirstOrDefault(p => p.CategoryId == CategoryId);
-                if (productDto is not null)
-                {
-                    CategoryName = productDto.CategoryName;
-                }
-            }            
+                var productDto = Products.First();
+                CategoryName = productDto.CategoryName;
+            }
         }
         catch (Exception ex)
         {

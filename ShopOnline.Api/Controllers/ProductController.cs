@@ -17,15 +17,14 @@ public class ProductController : ControllerBase
         try
         {
             var products = await _productRepository.GetItems();
-            var categories = await _productRepository.GetCategories();
 
-            if (products is null || categories is null)
+            if (products is null)
             {
                 return NotFound();
             }
             else
             {
-                var productDtos = products.ConvertToDto(categories);
+                var productDtos = products.ConvertToDto();
                 return Ok(productDtos);
             }
         }
@@ -49,8 +48,7 @@ public class ProductController : ControllerBase
             }
             else
             {
-                var category = await _productRepository.GetCategory(product.CategoryId);
-                var productDto = product.ConvertToDto(category!);
+                var productDto = product.ConvertToDto();
                 return Ok(productDto);
             }
         }
@@ -86,8 +84,7 @@ public class ProductController : ControllerBase
         try
         {
             var products = await _productRepository.GetItemsByCategory(categoryId);
-            var categories = await _productRepository.GetCategories();
-            var productDtos = products.ConvertToDto(categories);
+            var productDtos = products.ConvertToDto();
 
             return Ok(productDtos);
         }

@@ -23,19 +23,26 @@ public class ProductRepository : IProductRepository
 
     public async Task<Product?> GetItem(int id)
     {
-        var product = await _shopOnlineDbContext.Products.FindAsync(id);
+        var product = await _shopOnlineDbContext.Products
+            .Include(p => p.ProductCategory)
+            .SingleOrDefaultAsync(p => p.Id == id);
         return product;
     }
 
     public async Task<IEnumerable<Product>> GetItems()
     {
-        var products = await _shopOnlineDbContext.Products.ToListAsync();
+        var products = await _shopOnlineDbContext.Products
+            .Include(p => p.ProductCategory)
+            .ToListAsync();
         return products;
     }
 
     public async Task<IEnumerable<Product>> GetItemsByCategory(int categoryId)
     {
-        var products = await _shopOnlineDbContext.Products.Where(p => p.CategoryId == categoryId).ToListAsync();
+        var products = await _shopOnlineDbContext.Products
+            .Include(p => p.ProductCategory)
+            .Where(p => p.CategoryId == categoryId)
+            .ToListAsync();
         return products;
     }
 }
