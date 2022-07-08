@@ -1,0 +1,21 @@
+﻿@page "/ProductsByCategory/{categoryId:int}"
+
+@if (Products is null && ErrorMessage is null)
+{
+    <DisplaySpinner />
+}
+else if (ErrorMessage is not null)
+{
+    <DisplayError ErrorMassege="@ErrorMessage" />
+}
+else
+{
+    @if (Products!.Any())
+    {
+        <h3 class="mb-5">Products (@CategoryName)</h3>
+
+        <div class="row">
+            <DisplayProducts Products="@Products" />
+        </div>
+    }
+}

@@ -70,4 +70,15 @@ public static class DtoConversions
             TotalPrice = product.Price * cartItem.Qty
         };
     }
+
+    public static IEnumerable<ProductCategoryDto> ConvertToDto(this IEnumerable<ProductCategory> categories)
+    {
+        return (from category in categories
+                select new ProductCategoryDto
+                {
+                    Id = category.Id,
+                    Name = category.Name,
+                    IconCSS = category.IconCSS
+                }).ToList();
+    }
 }

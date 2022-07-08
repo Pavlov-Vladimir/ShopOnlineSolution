@@ -15,7 +15,7 @@ public class ProductRepository : IProductRepository
         return categories;
     }
 
-    public async Task<ProductCategory> GetCategory(int id)
+    public async Task<ProductCategory?> GetCategory(int id)
     {
         var category = await _shopOnlineDbContext.ProductCategories.SingleOrDefaultAsync(c => c.Id == id);
         return category;
@@ -30,6 +30,12 @@ public class ProductRepository : IProductRepository
     public async Task<IEnumerable<Product>> GetItems()
     {
         var products = await _shopOnlineDbContext.Products.ToListAsync();
+        return products;
+    }
+
+    public async Task<IEnumerable<Product>> GetItemsByCategory(int categoryId)
+    {
+        var products = await _shopOnlineDbContext.Products.Where(p => p.CategoryId == categoryId).ToListAsync();
         return products;
     }
 }

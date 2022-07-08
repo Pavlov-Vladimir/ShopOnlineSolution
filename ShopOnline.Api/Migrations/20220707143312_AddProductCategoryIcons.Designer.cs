@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShopOnline.Api.Data;
 
@@ -10,9 +11,10 @@ using ShopOnline.Api.Data;
 namespace ShopOnline.Api.Migrations
 {
     [DbContext(typeof(ShopOnlineDbContext))]
-    partial class ShopOnlineDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220707143312_AddProductCategoryIcons")]
+    partial class AddProductCategoryIcons
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -368,13 +370,13 @@ namespace ShopOnline.Api.Migrations
                         new
                         {
                             Id = 3,
-                            IconCSS = "fa-solid fa-headphones",
+                            IconCSS = "fa-solid fa-laptop-mobile",
                             Name = "Electronics"
                         },
                         new
                         {
                             Id = 4,
-                            IconCSS = "fa-solid fa-shoe-prints",
+                            IconCSS = "fa-solid fa-boot",
                             Name = "Shoes"
                         });
                 });

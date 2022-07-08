@@ -1,0 +1,21 @@
+﻿@if (ProductCategoryDtos is null && ErrorMessage is null)
+{
+    <DisplaySpinner />
+}
+else if (ErrorMessage is not null)
+{
+    <DisplayError ErrorMassege="@ErrorMessage" />
+}
+else
+{
+    @foreach (var category in ProductCategoryDtos!)
+    {
+        var link = $"ProductsByCategory/{category.Id}";
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="@link">
+                <span class="@category.IconCSS"></span>&nbsp;@category.Name
+            </NavLink>
+        </div>
+    }
+}
