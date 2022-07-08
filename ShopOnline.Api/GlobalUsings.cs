@@ -13,3 +13,4 @@ global using ShopOnline.Api.Repositories.Contracts;
 global using Microsoft.AspNetCore.Http;
 global using Microsoft.AspNetCore.Mvc;
 global using ShopOnline.Api.Extensions;
+global using System.ComponentModel.DataAnnotations.Schema;

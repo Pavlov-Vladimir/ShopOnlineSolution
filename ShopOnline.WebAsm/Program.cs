@@ -7,4 +7,8 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https:/
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IShoppingCartService, ShoppingCartService>();
 
+builder.Services.AddBlazoredLocalStorage();
+builder.Services.AddScoped<IManageCartItemsLocalStorageService, ManageCartItemsLocalStorageService>();
+builder.Services.AddScoped<IManageProductsLocalStorageService, ManageProductsLocalStorageService>();
+
 await builder.Build().RunAsync();

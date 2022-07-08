@@ -14,3 +14,4 @@ global using System.Net;
 global using Newtonsoft.Json;
 global using System.Text;
 global using Microsoft.JSInterop;
+global using Blazored.LocalStorage;
